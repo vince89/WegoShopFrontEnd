@@ -1,0 +1,30 @@
+<h1>Total Sales</h1>
+ 
+ <table  border="1">
+<tr>
+  <th>Order Numer</th>
+  <th>Drink</th>
+  <th>Number of Items</th>
+  <th>Size</th>
+  <th>Total Spend</th>
+</tr>
+<% if (@account_names != nil) %>
+ <% @account_names.each_with_index do |name, index| %>                    
+    <tr>
+      <td><%= name %></td>
+      <td><%= @combined_conversions[index] %></td>
+      <td><%= @noi[index] %></td>
+      <td><%= @size_type[index] %></td>
+      <td><%= @combined_spend[index] %></td>
+   
+    </tr>
+  <% end %>
+  <% end %>
+ </table> 
+  <label>
+  	Total :
+  	</label>
+   <%= @total %>
+  <br/>
+
+<%= link_to 'Back', welcome_index_path %>

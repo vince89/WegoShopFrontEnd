@@ -1,0 +1,19 @@
+<h1>WegoShop Home</h1>
+
+<%= link_to 'Total Sales', custom_hello_method1_path %><br>
+<%= link_to 'Add Orders', custom_hello_method4_path %><br>
+
+
+
+<%= form_tag(custom_hello_method2_path, method: :get) do%>
+
+<%= select_tag(:user_search_id, options_for_select(@drinks)) %>
+
+<%= submit_tag 'Orders By Drink', name: nil %>
+<% end %>
+
+<%= form_tag(custom_hello_method3_path, method: :get) do %>
+<%= select_tag(:user_search_id, options_for_select(@size)) %>
+  <%= submit_tag 'Orders By Size', name: nil %>
+
+<% end %>

@@ -1,0 +1,13 @@
+<h1> Add Order</h1>
+
+
+
+<%= form_tag(custom_hello_method5_path, method: :get) do %>
+<label>Drink : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= select_tag(:drink, options_for_select(@drinks)) %><br/><br/>
+<label>Size : </label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= select_tag(:size, options_for_select(@size)) %><br /><br/>
+<label>No of Items : </label>&nbsp;&nbsp; <%= number_field_tag :n %><br/><br/>
+  <%= submit_tag 'Add Order', name: nil %><br/><br/>
+
+<% end %>
+
+<%= link_to 'Back', welcome_index_path %>
