@@ -2,38 +2,38 @@
 class CustomHelloController < ApplicationController
 
 def method1
-  
-  
-  recent_posts = HTTParty.get("http://localhost:8080/WegoShop/api/getOrders")
-
-body = JSON.parse(recent_posts)
-num=body.size
+recent_posts = HTTParty.get("http://localhost:8080/WegoShop/api/getOrders")
+orders = JSON.parse(recent_posts)
+num=orders.size
 total=0
-for current_iteration_number in 0..num-1 do
-  id = body[current_iteration_number]
-hjs = id.to_json
-puts hjs
-order = JSON.parse(hjs)
-orderNumber = order["orderNumber"];
-totalPrice = order["totalPrice"];
-drink = order["drink"];
-noOfItems = order["noOfItems"];
-size = order["size"];
-(a ||= []).push(orderNumber)
-
-(b ||= []).push(totalPrice)
-total = total + totalPrice
-(c ||= []).push(drink)
-(d ||= []).push(noOfItems)
-(e ||= []).push(size)
-end
-@account_names=a
-@combined_conversions =c
-@combined_spend = b
-@noi =d
-@size_type = e
+                  for current_iteration_number in 0..num-1 do
+                    
+                            orders_temp = orders[current_iteration_number]
+                            orders_json = orders_temp.to_json
+                            puts orders_json
+                            order = JSON.parse(orders_json)
+                            orderNumber = order["orderNumber"];
+                            totalPrice = order["totalPrice"];
+                            drink = order["drink"];
+                            noOfItems = order["noOfItems"];
+                            size = order["size"];
+                        
+                        
+                          (orderNumberarray ||= []).push(orderNumber)
+                          (totalPricearray ||= []).push(totalPrice)
+                           total = total + totalPrice
+                          (drinkarray ||= []).push(drink)
+                          (noOfItemsarray ||= []).push(noOfItems)
+                          (sizearray ||= []).push(size)
+                  end
+                  
+@orderNumberarray=orderNumberarray
+@drinkarray =drinkarray
+@totalPricearray = totalPricearray
+@noi =noOfItemsarray
+@size_type = sizearray
 @total=total
-  end   
+end   
 
 
 def method2
@@ -43,33 +43,35 @@ def method2
              }.to_json,
     :headers => { 'Content-Type' => 'application/json' } )
 recent_posts.nil?
-body = JSON.parse(recent_posts)
-num=body.size
-
+orderbody = JSON.parse(recent_posts)
+num=orderbody.size
 total=0
-for current_iteration_number in 0..num-1 do
-  id = body[current_iteration_number]
-hjs = id.to_json
-puts hjs
-order = JSON.parse(hjs)
-orderNumber = order["orderNumber"];
-totalPrice = order["totalPrice"];
-drink = order["drink"];
-noOfItems = order["noOfItems"];
-size = order["size"];
-(a ||= []).push(orderNumber)
+                       for current_iteration_number in 0..num-1 do
+                            
+                          order_temp = orderbody[current_iteration_number]
+                          order_json = order_temp.to_json
+                          puts order_json
+                          order = JSON.parse(order_json)
+                          orderNumber = order["orderNumber"];
+                          totalPrice = order["totalPrice"];
+                          drink = order["drink"];
+                          noOfItems = order["noOfItems"];
+                          size = order["size"];
 
-(b ||= []).push(totalPrice)
-total = total + totalPrice
-(c ||= []).push(drink)
-(d ||= []).push(noOfItems)
-(e ||= []).push(size)
-end
-@account_names=a
-@combined_conversions =c
-@combined_spend = b
-@noi =d
-@size_type = e
+                          (orderNumberarray ||= []).push(orderNumber)
+                          (totalPricearray ||= []).push(totalPrice)
+                           total = total + totalPrice
+                          (drinkarray ||= []).push(drink)
+                          (noOfItemsarray ||= []).push(noOfItems)
+                          (sizearray ||= []).push(size)
+                          
+                      end
+                      
+@orderNumberarray=orderNumberarray
+@drinkarray =drinkarray
+@totalPricearray = totalPricearray
+@noi =noOfItemsarray
+@size_type = sizearray
 @total=total
 end
 
@@ -81,55 +83,54 @@ def method3
              }.to_json,
     :headers => { 'Content-Type' => 'application/json' } )
 
-body = JSON.parse(recent_posts)
-num=body.size
+orderbody = JSON.parse(recent_posts)
+num=orderbody.size
 total=0
-for current_iteration_number in 0..num-1 do
-  id = body[current_iteration_number]
-hjs = id.to_json
-puts hjs
-order = JSON.parse(hjs)
-orderNumber = order["orderNumber"];
-totalPrice = order["totalPrice"];
-drink = order["drink"];
-noOfItems = order["noOfItems"];
-size = order["size"];
-(a ||= []).push(orderNumber)
-
-(b ||= []).push(totalPrice)
-total = total + totalPrice
-(c ||= []).push(drink)
-(d ||= []).push(noOfItems)
-(e ||= []).push(size)
-end
-@account_names=a
-@combined_conversions =c
-@combined_spend = b
-@noi =d
-@size_type = e
+                      for current_iteration_number in 0..num-1 do
+                        
+                            order_temp = orderbody[current_iteration_number]
+                            order_json = order_temp.to_json
+                            puts order_json
+                            order = JSON.parse(order_json)
+                            orderNumber = order["orderNumber"];
+                            totalPrice = order["totalPrice"];
+                            drink = order["drink"];
+                            noOfItems = order["noOfItems"];
+                            size = order["size"];
+                      
+                          (orderNumberarray ||= []).push(orderNumber)
+                          (totalPricearray ||= []).push(totalPrice)
+                           total = total + totalPrice
+                          (drinkarray ||= []).push(drink)
+                          (noOfItemsarray ||= []).push(noOfItems)
+                          (sizearray ||= []).push(size)
+                          
+                      end
+                      
+@orderNumberarray=orderNumberarray
+@drinkarray =drinkarray
+@totalPricearray = totalPricearray
+@noi =noOfItemsarray
+@size_type = sizearray
 @total=total
 end
 
-def method5
-  @size=params[:size]
-  @n=params[:n]
-  @drink=params[:drink]
-
+  def method5
+    @size=params[:size]
+    @n=params[:n]
+    @drink=params[:drink]
   recent_posts = HTTParty.post('http://localhost:8080/WegoShop/api/insertOrder', 
-    :body => { :type => @size, :drink => @drink,:n => @n,
-             }.to_json,
-    :headers => { 'Content-Type' => 'application/json' } )
+      :body => { :type => @size, :drink => @drink,:n => @n,
+               }.to_json,
+      :headers => { 'Content-Type' => 'application/json' } )
+  @result=recent_posts
+  end
 
 
-@result=recent_posts
-
-end
-
-
-def method4
-@drinks = [ 'Espresso', 'Latte', 'Cappuccino','Green Tea','Hot Tea']
-@size = [ 'Tall', 'Grande', 'Venti']
-end
+  def method4
+  @drinks = [ 'Espresso', 'Latte', 'Cappuccino','Green Tea','Hot Tea']
+  @size = [ 'Tall', 'Grande', 'Venti']
+  end
 
 
 end 

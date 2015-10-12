@@ -8,14 +8,14 @@
   <th>Size</th>
   <th>Total Spend</th>
 </tr>
-<% if (@account_names != nil) %>
- <% @account_names.each_with_index do |name, index| %>                    
+<% if (@orderNumberarray != nil) %>
+ <% @orderNumberarray.each_with_index do |name, index| %>                    
     <tr>
       <td><%= name %></td>
-      <td><%= @combined_conversions[index] %></td>
+      <td><%= @drinkarray[index] %></td>
             <td><%= @noi[index] %></td>
       <td><%= @size_type[index] %></td>
-      <td><%= @combined_spend[index] %></td>
+      <td><%= @totalPricearray[index] %></td>
     </tr>
   <% end %>
    <% end %>
